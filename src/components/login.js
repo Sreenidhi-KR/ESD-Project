@@ -30,64 +30,42 @@ function Login({ user }) {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-box regular-shadow">
-        <div className="header-form">
-          <h4 className="text-primary text-center">
-            <i
-              className="fa fa-user-circle"
-              style={{ fontSize: "110px", color: "lightblue" }}
-            ></i>
-          </h4>
-          <div className="image"></div>
-        </div>
-
-        <div className="body-form">
-          <form onSubmit={handleLogin} id="login-form">
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">
-                  <i className="fa fa-user"></i>
-                </span>
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Email Address"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                id="email"
-                required
-              />
-            </div>
-
-            <div className="input-group mb-3">
-              <div className="input-group-prepend">
-                <span className="input-group-text">
-                  <i className="fa fa-lock"></i>
-                </span>
-              </div>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                id="password"
-                required
-              />
-            </div>
-
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Sign In</h3>
+          <div className="form-group mt-3">
+            <label>Email address</label>
+            <input
+              type="email"
+              required
+              className="form-control mt-1"
+              placeholder="Enter email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control mt-1"
+              placeholder="Enter password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div className="d-grid mt-5">
             <button
               type="submit"
-              className="btn btn-primary btn-block"
-              id="login-submit"
+              className="btn btn-primary"
+              onClick={(e) => handleLogin(e)}
             >
-              LOGIN
+              Submit
             </button>
-          </form>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
