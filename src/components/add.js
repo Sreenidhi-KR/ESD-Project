@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
 
-function Add({ setSpecialisations }) {
+function Add({ setSpecialisations, setAdd }) {
   const [specialisationName, setSpecialisationName] = useState("");
   const [specialisationCode, setSpecialisationCode] = useState("");
   const [specialisationDescription, setSpecialisationDescription] =
@@ -86,7 +86,21 @@ function Add({ setSpecialisations }) {
         />
       </td>
       <td>
-        <button onClick={(e) => handleSubmit(e)}>Submit</button>
+        <button
+          class="btn btn-sm btn-circle btn-success "
+          onClick={(e) => handleSubmit(e)}
+        >
+          ✔️
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setAdd((value) => !value);
+          }}
+          class="btn btn-sm btn-circle btn-light"
+        >
+          🔙
+        </button>
       </td>
     </tr>
   );

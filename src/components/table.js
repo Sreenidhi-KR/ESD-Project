@@ -17,6 +17,7 @@ function TableView() {
   const [modalShow, setModalShow] = React.useState(false);
   const [courses, setCourses] = useState([]);
   const [specialisations, setSpecialisations] = useState([]);
+  const [add, setAdd] = useState(false);
 
   const handleEdit = (specialisation) => {
     setEdit(specialisation.code);
@@ -90,7 +91,9 @@ function TableView() {
             <th>
               <button
                 type="button"
-                onClick={() => {}}
+                onClick={() => {
+                  setAdd((value) => !value);
+                }}
                 class="btn btn-sm btn-circle btn-success "
               >
                 ➕
@@ -190,7 +193,11 @@ function TableView() {
                 </tr>
               );
             })}
-          <Add setSpecialisations={setSpecialisations} />
+          {add > 0 ? (
+            <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
+          ) : (
+            <span></span>
+          )}
         </tbody>
       </table>
     </div>
