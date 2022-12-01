@@ -49,18 +49,22 @@ function TableView() {
       year: editYear,
       creditsRequired: editCredits,
     };
-    console.log(data);
-    axios
-      .patch(`${urlBase}/specialisation/update`, data)
-      .then((json) => {
-        setEdit(-1);
-      })
-      .then(() => {
-        getSpecialisations(setSpecialisations);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (!(editCode && editName && editDescription && editYear && editCredits)) {
+      alert("All Fields are Required");
+    } else {
+      axios
+        .patch(`${urlBase}/specialisation/update`, data)
+        .then((json) => {
+          setEdit(-1);
+        })
+        .then(() => {
+          getSpecialisations(setSpecialisations);
+        })
+        .catch((error) => {
+          alert("Error While Updating");
+          console.log(error);
+        });
+    }
   };
 
   useEffect(() => {
@@ -74,6 +78,7 @@ function TableView() {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+
       <table class="table table-hover">
         <thead>
           <tr class="table-primary">
@@ -94,7 +99,7 @@ function TableView() {
                 onClick={() => {
                   setAdd((value) => !value);
                 }}
-                class="btn btn-sm btn-circle btn-success "
+                class="btn btn-sm btn-circle btn-light"
               >
                 ➕
               </button>
@@ -110,6 +115,7 @@ function TableView() {
                   <td colSpan={2}>
                     <input
                       type="text"
+                      className="form-control"
                       value={editName}
                       placeholder="Specialisation Name"
                       onChange={(e) => setEditName(e.target.value)}
@@ -118,6 +124,7 @@ function TableView() {
                   <td colSpan={2}>
                     <input
                       type="text"
+                      className="form-control"
                       value={editDescription}
                       placeholder="Specialisation Description"
                       onChange={(e) => setEditDescription(e.target.value)}
@@ -125,7 +132,8 @@ function TableView() {
                   </td>
                   <td colSpan={2}>
                     <input
-                      type="text"
+                      type="number"
+                      className="form-control"
                       value={editYear}
                       placeholder="Specialisation Year"
                       onChange={(e) => setEditYear(e.target.value)}
@@ -133,7 +141,8 @@ function TableView() {
                   </td>
                   <td colSpan={2}>
                     <input
-                      type="text"
+                      type="number"
+                      className="form-control"
                       value={editCredits}
                       placeholder="Specialisation Credits Required"
                       onChange={(e) => setEditCredits(e.target.value)}
@@ -193,6 +202,7 @@ function TableView() {
                 </tr>
               );
             })}
+
           {add > 0 ? (
             <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
           ) : (

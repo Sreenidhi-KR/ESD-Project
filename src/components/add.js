@@ -20,18 +20,30 @@ function Add({ setSpecialisations, setAdd }) {
       year: specialisationYear,
       creditsRequired: specialisationCredits,
     };
-    axios
-      .post(`${urlBase}/specialisation/create`, data)
-      .then((json) => {
-        alert("Success");
-        clear();
-        getSpecialisations(setSpecialisations);
-      })
-      .catch((error) => {
-        alert("error");
-        clear();
-        console.log(error);
-      });
+
+    if (
+      !(
+        specialisationCode &&
+        specialisationName &&
+        specialisationYear &&
+        specialisationCredits
+      )
+    ) {
+      alert("All Fields are Required");
+    } else {
+      axios
+        .post(`${urlBase}/specialisation/create`, data)
+        .then((json) => {
+          //alert("Success");
+          clear();
+          getSpecialisations(setSpecialisations);
+        })
+        .catch((error) => {
+          alert("Error While Adding");
+          clear();
+          console.log(error);
+        });
+    }
   };
 
   const clear = () => {
@@ -47,6 +59,8 @@ function Add({ setSpecialisations, setAdd }) {
       <td>
         <input
           type="text"
+          className="form-control"
+          required
           value={specialisationCode}
           placeholder="Code"
           onChange={(e) => setSpecialisationCode(e.target.value)}
@@ -55,6 +69,8 @@ function Add({ setSpecialisations, setAdd }) {
       <td colSpan={2}>
         <input
           type="text"
+          className="form-control"
+          required
           value={specialisationName}
           placeholder="Name"
           onChange={(e) => setSpecialisationName(e.target.value)}
@@ -64,6 +80,8 @@ function Add({ setSpecialisations, setAdd }) {
       <td colSpan={2}>
         <input
           type="text"
+          className="form-control"
+          required
           value={specialisationDescription}
           placeholder="Description"
           onChange={(e) => setSpecialisationDescription(e.target.value)}
@@ -71,7 +89,9 @@ function Add({ setSpecialisations, setAdd }) {
       </td>
       <td colSpan={2}>
         <input
-          type="text"
+          type="number"
+          className="form-control"
+          required
           value={specialisationYear}
           placeholder="Year"
           onChange={(e) => setSpecialisationYear(e.target.value)}
@@ -79,7 +99,9 @@ function Add({ setSpecialisations, setAdd }) {
       </td>
       <td colSpan={2}>
         <input
-          type="text"
+          type="number"
+          className="form-control"
+          required
           value={specialisationCredits}
           placeholder="Credits Required"
           onChange={(e) => setSpecialisationCredits(e.target.value)}
@@ -87,6 +109,7 @@ function Add({ setSpecialisations, setAdd }) {
       </td>
       <td>
         <button
+          type="submit"
           class="btn btn-sm btn-circle btn-success "
           onClick={(e) => handleSubmit(e)}
         >

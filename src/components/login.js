@@ -34,9 +34,9 @@ function Login({ user }) {
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign In</h3>
+          <h3>Sign In</h3>
           <div className="form-group mt-3">
-            <label>Email address</label>
+            <h7>Email address</h7>
             <input
               type="email"
               required
@@ -47,7 +47,7 @@ function Login({ user }) {
             />
           </div>
           <div className="form-group mt-3">
-            <label>Password</label>
+            <h7>Password</h7>
             <input
               type="password"
               className="form-control mt-1"
