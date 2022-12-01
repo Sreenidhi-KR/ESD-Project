@@ -3,22 +3,30 @@ import "./App.css";
 import { Fragment, useState } from "react";
 
 import Login from "./components/Login";
-import Add from "./components/Add";
-import Table from "./components/Table";
+
+import TableView from "./components/Table";
 
 function App() {
-  const [userID, setUserId] = useState(-1);
-  const [specialisations, setSpecialisations] = useState([]);
+  const [userID, setUserId] = useState(localStorage.getItem("Id"));
 
   return userID <= 0 ? (
     <Login user={setUserId} />
   ) : (
     <Fragment>
-      <Add setSpecialisations={setSpecialisations} />
-      <Table
-        specialisations={specialisations}
-        setSpecialisations={setSpecialisations}
-      />
+      <div class="logout">
+        <button
+          type="button"
+          onClick={() => {
+            localStorage.setItem("Id", -1);
+            setUserId(-1);
+          }}
+          class="btn btn-sm btn-circle btn-danger "
+        >
+          ⏻
+        </button>
+      </div>
+
+      <TableView />
     </Fragment>
   );
 }

@@ -11,6 +11,7 @@ function Login({ user }) {
       .post(`${urlBase}/student/login`, credentials)
       .then((json) => {
         user(json.data.studentId);
+        localStorage.setItem("Id", json.data.studentId);
         setEmail("");
         setPassword("");
       })

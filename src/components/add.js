@@ -43,46 +43,52 @@ function Add({ setSpecialisations }) {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={specialisationName}
-        placeholder="Specialisation Name"
-        onChange={(e) => setSpecialisationName(e.target.value)}
-      />
-      <br></br>
-      <input
-        type="text"
-        value={specialisationCode}
-        placeholder="Specialisation Code"
-        onChange={(e) => setSpecialisationCode(e.target.value)}
-      />
-      <br></br>
-      <input
-        type="text"
-        value={specialisationDescription}
-        placeholder="Specialisation Description"
-        onChange={(e) => setSpecialisationDescription(e.target.value)}
-      />
-      <br></br>
-      <input
-        type="text"
-        value={specialisationYear}
-        placeholder="Specialisation Year"
-        onChange={(e) => setSpecialisationYear(e.target.value)}
-      />
-      <br></br>
-      <input
-        type="text"
-        value={specialisationCredits}
-        placeholder="Specialisation Credits Required"
-        onChange={(e) => setSpecialisationCredits(e.target.value)}
-      />
-      <br></br>
-      <button onClick={(e) => handleSubmit(e)}>Submit</button>
+    <tr>
+      <td>
+        <input
+          type="text"
+          value={specialisationCode}
+          placeholder="Code"
+          onChange={(e) => setSpecialisationCode(e.target.value)}
+        />
+      </td>
+      <td colSpan={2}>
+        <input
+          type="text"
+          value={specialisationName}
+          placeholder="Name"
+          onChange={(e) => setSpecialisationName(e.target.value)}
+        />
+      </td>
 
-      <br></br>
-    </div>
+      <td colSpan={2}>
+        <input
+          type="text"
+          value={specialisationDescription}
+          placeholder="Description"
+          onChange={(e) => setSpecialisationDescription(e.target.value)}
+        />
+      </td>
+      <td colSpan={2}>
+        <input
+          type="text"
+          value={specialisationYear}
+          placeholder="Year"
+          onChange={(e) => setSpecialisationYear(e.target.value)}
+        />
+      </td>
+      <td colSpan={2}>
+        <input
+          type="text"
+          value={specialisationCredits}
+          placeholder="Credits Required"
+          onChange={(e) => setSpecialisationCredits(e.target.value)}
+        />
+      </td>
+      <td>
+        <button onClick={(e) => handleSubmit(e)}>Submit</button>
+      </td>
+    </tr>
   );
 }
 

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
 import CoursesModal from "./CoursesModal";
+import Add from "./Add";
 
-function Table({ specialisations, setSpecialisations }) {
+function TableView() {
   const urlBase = "http://localhost:8080/api";
 
   const [shouldEdit, setEdit] = useState("");
@@ -15,6 +16,7 @@ function Table({ specialisations, setSpecialisations }) {
   const [editCredits, setEditCredits] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
   const [courses, setCourses] = useState([]);
+  const [specialisations, setSpecialisations] = useState([]);
 
   const handleEdit = (specialisation) => {
     setEdit(specialisation.code);
@@ -77,9 +79,9 @@ function Table({ specialisations, setSpecialisations }) {
             <th scope="col ">Code</th>
 
             <th scope="col">Name</th>
-
+            <th></th>
             <th scope="col">Description</th>
-
+            <th></th>
             <th scope="col">Year</th>
 
             <th scope="col">Credits</th>
@@ -102,7 +104,7 @@ function Table({ specialisations, setSpecialisations }) {
               return specialisation.code === shouldEdit ? (
                 <tr>
                   <td>{editCode}</td>
-                  <td>
+                  <td colSpan={2}>
                     <input
                       type="text"
                       value={editName}
@@ -110,7 +112,7 @@ function Table({ specialisations, setSpecialisations }) {
                       onChange={(e) => setEditName(e.target.value)}
                     />
                   </td>
-                  <td>
+                  <td colSpan={2}>
                     <input
                       type="text"
                       value={editDescription}
@@ -118,7 +120,7 @@ function Table({ specialisations, setSpecialisations }) {
                       onChange={(e) => setEditDescription(e.target.value)}
                     />
                   </td>
-                  <td>
+                  <td colSpan={2}>
                     <input
                       type="text"
                       value={editYear}
@@ -126,7 +128,7 @@ function Table({ specialisations, setSpecialisations }) {
                       onChange={(e) => setEditYear(e.target.value)}
                     />
                   </td>
-                  <td>
+                  <td colSpan={2}>
                     <input
                       type="text"
                       value={editCredits}
@@ -134,7 +136,7 @@ function Table({ specialisations, setSpecialisations }) {
                       onChange={(e) => setEditCredits(e.target.value)}
                     />
                   </td>
-                  <td></td>
+
                   <td>
                     <button
                       class="btn btn-sm btn-circle btn-success "
@@ -142,23 +144,22 @@ function Table({ specialisations, setSpecialisations }) {
                     >
                       ✔️
                     </button>
-                  </td>
-                  <td>
+
                     <button
-                      class="btn btn-sm btn-circle btn-danger"
+                      class="btn btn-sm btn-circle btn-light"
                       onClick={() => {
                         setEdit("");
                       }}
                     >
-                      ⛌
+                      🔙
                     </button>
                   </td>
                 </tr>
               ) : (
                 <tr>
                   <td>{specialisation.code}</td>
-                  <td>{specialisation.name}</td>
-                  <td>{specialisation.description}</td>
+                  <td colSpan={2}>{specialisation.name}</td>
+                  <td colSpan={2}>{specialisation.description}</td>
                   <td>{specialisation.year} </td>
                   <td>{specialisation.creditsRequired}</td>
                   <td>
@@ -189,9 +190,10 @@ function Table({ specialisations, setSpecialisations }) {
                 </tr>
               );
             })}
+          <Add setSpecialisations={setSpecialisations} />
         </tbody>
       </table>
     </div>
   );
 }
-export default Table;
+export default TableView;

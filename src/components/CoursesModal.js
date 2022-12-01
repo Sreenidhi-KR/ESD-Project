@@ -11,7 +11,8 @@ function CoursesModal(props) {
       </Modal.Header>
       <Modal.Body>
         <ul class="list-group list-group-flush list-group-numbered">
-          {props.specialisation.courseList ? (
+          {props.specialisation.courseList &&
+          props.specialisation.courseList.length > 0 ? (
             props.specialisation.courseList.map((i) => {
               return <li class="list-group-item">{i.name}</li>;
             })
