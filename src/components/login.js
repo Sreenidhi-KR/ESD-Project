@@ -8,10 +8,10 @@ function Login({ user }) {
 
   const startLogin = (credentials) => {
     axios
-      .post(`${urlBase}/student/login`, credentials)
+      .post(`${urlBase}/admin/login`, credentials)
       .then((json) => {
-        user(json.data.studentId);
-        localStorage.setItem("Id", json.data.studentId);
+        user(json.data.adminId);
+        localStorage.setItem("Id", json.data.adminId);
         setEmail("");
         setPassword("");
       })
@@ -36,7 +36,7 @@ function Login({ user }) {
         <div className="Auth-form-content">
           <h3>Sign In</h3>
           <div className="form-group mt-3">
-            <h7>Email address</h7>
+            <h5>Email address</h5>
             <input
               type="email"
               required
@@ -47,7 +47,7 @@ function Login({ user }) {
             />
           </div>
           <div className="form-group mt-3">
-            <h7>Password</h7>
+            <h5>Password</h5>
             <input
               type="password"
               className="form-control mt-1"

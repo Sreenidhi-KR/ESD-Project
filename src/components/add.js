@@ -110,11 +110,12 @@ function Add({ setSpecialisations, setAdd }) {
       <td>
         <button
           type="submit"
-          class="btn btn-sm btn-circle btn-success "
+          className="btn btn-sm btn-circle btn-success "
           onClick={(e) => handleSubmit(e)}
         >
           ✔️
         </button>
+        <span> </span>
         <button
           type="button"
           onClick={() => {

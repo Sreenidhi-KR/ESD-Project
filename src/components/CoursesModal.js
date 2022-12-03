@@ -1,7 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 
 function CoursesModal(props) {
-  console.log(props.specialisation);
+  console.log(props);
   return (
     <Modal {...props} size="lg" centered>
       <Modal.Header closeButton>
@@ -14,7 +14,11 @@ function CoursesModal(props) {
           {props.specialisation.courseList &&
           props.specialisation.courseList.length > 0 ? (
             props.specialisation.courseList.map((i) => {
-              return <li class="list-group-item">{i.name}</li>;
+              return (
+                <li key={i.code} class="list-group-item">
+                  {i.name}
+                </li>
+              );
             })
           ) : (
             <p>No Courses</p>

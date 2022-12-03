@@ -110,7 +110,7 @@ function TableView() {
           {specialisations &&
             specialisations.map((specialisation, index) => {
               return specialisation.code === shouldEdit ? (
-                <tr>
+                <tr key={index}>
                   <td>{editCode}</td>
                   <td colSpan={2}>
                     <input
@@ -156,6 +156,7 @@ function TableView() {
                     >
                       ✔️
                     </button>
+                    <span> </span>
 
                     <button
                       class="btn btn-sm btn-circle btn-light"
@@ -168,7 +169,7 @@ function TableView() {
                   </td>
                 </tr>
               ) : (
-                <tr>
+                <tr key={index}>
                   <td>{specialisation.code}</td>
                   <td colSpan={2}>{specialisation.name}</td>
                   <td colSpan={2}>{specialisation.description}</td>
@@ -205,9 +206,7 @@ function TableView() {
 
           {add > 0 ? (
             <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
-          ) : (
-            <span></span>
-          )}
+          ) : null}
         </tbody>
       </table>
     </div>
