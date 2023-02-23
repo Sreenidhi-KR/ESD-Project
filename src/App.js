@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 import { Fragment, useState } from "react";
 
-import Login from "./components/Login";
+import Login from "./components/login";
 
-import TableView from "./components/Table";
+import TableView from "./components/table";
 
 function App() {
   const [userID, setUserId] = useState(localStorage.getItem("Id"));

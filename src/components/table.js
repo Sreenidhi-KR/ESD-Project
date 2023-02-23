@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
 import CoursesModal from "./CoursesModal";
-import Add from "./Add";
+import Add from "./add";
 
 function TableView() {
   const urlBase = "http://localhost:8080/api";
